@@ -30,16 +30,20 @@ function evaluateCmd(userInput) {
       break;
     case "head":
       commandLibrary.head(userInputArray.slice(1));
+    default:
+      console.log("Command not found. \nprompt > ")
+      break;
   }
 }
 
 //where we will store the logic of our commands
 const commandLibrary = {
-  //the echo command
+
+  //the echo command, returns what the user typed
   "echo": function(userInput) {
     done(userInput);
   },
-  //the cat command
+  //the cat command, returns the contents of a file
   "cat": function(fullPath) {
     const fileName = fullPath[0];
     fs.readFile(fileName, (err, data) => {
@@ -49,7 +53,7 @@ const commandLibrary = {
       done(data);
     });
   },
-  //the sort command
+  //the sort command, returns a sorted file
   "sort": function(fullPath) {
     const fileName = fullPath[0];
     fs.readFile(fileName, (err, data) => {
@@ -60,7 +64,7 @@ const commandLibrary = {
         done(stringArray);
       })
     },
-  //the word count command
+  //the word count command, returns number of lines, words, and characters in a file
   "wc": function(fullPath) {
     const fileName = fullPath[0];
     fs.readFile(fileName, (err, data) => {
@@ -84,6 +88,7 @@ const commandLibrary = {
       done(counts);
       })
     },
+    //The unique command, returns unique elements in the file (no repeats)
     "uniq": function(fullPath) {
       const fileName = fullPath[0];
       fs.readFile(fileName, (err, data) => {
@@ -94,6 +99,7 @@ const commandLibrary = {
           done(stringArray);
       })
     },
+    //The head command, returns the first five elements of the file
     "head": function(fullPath) {
       const fileName = fullPath[0];
       fs.readFile(fileName, (err, data) => {
