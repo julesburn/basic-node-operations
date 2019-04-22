@@ -19,5 +19,7 @@
     "url": "https://github.com/julesburn/basic-node-operations/issues"
   },
   "homepage": "https://github.com/julesburn/basic-node-operations#readme",
-  "dependencies": {}
+  "dependencies": {
+    "nodemon": "^1.18.11"
+  }
 }

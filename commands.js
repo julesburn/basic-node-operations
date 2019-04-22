@@ -22,6 +22,7 @@ function evaluateCmd(userInput) {
       break;
     case "sort":
       commandLibrary.sort(userInputArray.slice(1));
+      break;
     case "wc":
       commandLibrary.wc(userInputArray.slice(1));
       break;
@@ -30,11 +31,13 @@ function evaluateCmd(userInput) {
       break;
     case "head":
       commandLibrary.head(userInputArray.slice(1));
-    default:
-      console.log("Command not found. \nprompt > ")
       break;
     case "tail":
       commandLibrary.tail(userInputArray.slice(1));
+      break;
+    default:
+      console.log("Command not found. \nprompt > ")
+      break;
   }
 }
 
