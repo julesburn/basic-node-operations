@@ -30,6 +30,8 @@ function evaluateCmd(userInput) {
       break;
     case "head":
       commandLibrary.head(userInputArray.slice(1));
+    case "tail":
+      commandLibrary.tail(userInputArray.slice(1));
   }
 }
 
@@ -104,6 +106,16 @@ const commandLibrary = {
           done(stringArray)
       })
     },
+    "tail": function(fullPath) {
+      const fileName = fullPath[0];
+      fs.readFile(fileName, (err, data) => {
+        if (err) console.error(err)  ;
+          const array = data.toString().split('\n');
+          var tailOfArray = array.slice(-5);
+          var stringArray = tailOfArray.join('\n');
+          done(stringArray)
+      })
+    }
   }
 
 module.exports.commandLibrary = commandLibrary;
